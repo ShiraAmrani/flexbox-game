@@ -1,0 +1,258 @@
+/* -------------------- */
+/* GENERAL              */
+/* -------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0f172a;
+    color: white;
+}
+
+
+/* -------------------- */
+/* HEADER               */
+/* -------------------- */
+
+.main-header {
+    text-align: center;
+    padding: 35px 20px 20px;
+}
+
+.main-header h1 {
+    margin-bottom: 10px;
+    font-size: 38px;
+}
+
+.main-header p {
+    margin: 0;
+    color: #cbd5e1;
+}
+
+
+/* -------------------- */
+/* GAME                 */
+/* -------------------- */
+
+.game {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.game-info {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#level-counter {
+    color: #93c5fd;
+    font-weight: bold;
+}
+
+#instruction {
+    margin-top: 8px;
+}
+
+
+/* -------------------- */
+/* GAME BOARD           */
+/* -------------------- */
+
+.game-board {
+    width: 700px;
+    height: 350px;
+
+    margin: 0 auto 30px;
+
+    padding: 20px;
+
+    background-color: #1e293b;
+
+    border: 3px solid #475569;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+
+    overflow: hidden;
+}
+
+
+/* -------------------- */
+/* PLANETS              */
+/* -------------------- */
+
+.planet {
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 45px;
+
+    background-color: #334155;
+
+    border-radius: 50%;
+
+    margin: 5px;
+}
+
+
+/* -------------------- */
+/* CONTROLS             */
+/* -------------------- */
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.control-group label {
+    font-weight: bold;
+}
+
+.control-group select {
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    border: none;
+
+    font-size: 15px;
+}
+
+
+/* -------------------- */
+/* BUTTONS              */
+/* -------------------- */
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+button {
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: bold;
+}
+
+#check-button {
+    background-color: #22c55e;
+}
+
+#reset-button {
+    background-color: #f59e0b;
+}
+
+#next-button {
+    background-color: #3b82f6;
+}
+
+button:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+}
+
+
+/* -------------------- */
+/* MESSAGE              */
+/* -------------------- */
+
+.message {
+    min-height: 30px;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+.success {
+    color: #4ade80;
+}
+
+.error {
+    color: #f87171;
+}
+
+
+/* -------------------- */
+/* FOOTER               */
+/* -------------------- */
+
+footer {
+    text-align: center;
+
+    padding: 25px;
+
+    color: #94a3b8;
+}
+
+
+/* -------------------- */
+/* RESPONSIVE           */
+/* -------------------- */
+
+@media (max-width: 760px) {
+
+    .main-header h1 {
+        font-size: 30px;
+    }
+
+    .game-board {
+        transform: scale(0.5);
+
+        transform-origin: top left;
+
+        margin-bottom: -145px;
+    }
+
+    .game {
+        overflow: hidden;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+}
