@@ -28,9 +28,17 @@
 
         <section class="game-info">
 
-            <p id="level-counter">
-                Level 1 of 6
-            </p>
+            <div class="status-row">
+
+                <p id="level-counter">
+                    Level 1 of 6
+                </p>
+
+                <p id="attempt-counter">
+                    Attempts: 0
+                </p>
+
+            </div>
 
             <h2 id="instruction">
                 Center all planets horizontally.
@@ -133,18 +141,7 @@
                 Reset Level
             </button>
 
-            <button id="next-button" disabled>
-                Next Level
-            </button>
-
         </section>
-
-
-        <p
-            id="message"
-            class="message"
-            aria-live="polite"
-        ></p>
 
     </main>
 
@@ -156,6 +153,38 @@
         </p>
 
     </footer>
+
+
+    <!-- Popup Modal -->
+    <div
+        id="result-modal"
+        class="modal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-content">
+
+            <div
+                id="modal-icon"
+                class="modal-icon"
+            >
+                🚀
+            </div>
+
+            <h2 id="modal-title">
+                Mission Result
+            </h2>
+
+            <p id="modal-message">
+            </p>
+
+            <button id="modal-button">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
 
 
     <script src="script.js"></script>

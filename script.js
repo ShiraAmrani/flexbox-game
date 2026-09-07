@@ -23,17 +23,37 @@ const checkButton =
 const resetButton =
     document.getElementById("reset-button");
 
-const nextButton =
-    document.getElementById("next-button");
-
 const instruction =
     document.getElementById("instruction");
 
 const levelCounter =
     document.getElementById("level-counter");
 
-const message =
-    document.getElementById("message");
+const attemptCounter =
+    document.getElementById("attempt-counter");
+
+
+// -----------------------------------
+// MODAL ELEMENTS
+// -----------------------------------
+
+const resultModal =
+    document.getElementById("result-modal");
+
+const modalContent =
+    resultModal.querySelector(".modal-content");
+
+const modalIcon =
+    document.getElementById("modal-icon");
+
+const modalTitle =
+    document.getElementById("modal-title");
+
+const modalMessage =
+    document.getElementById("modal-message");
+
+const modalButton =
+    document.getElementById("modal-button");
 
 
 // -----------------------------------
@@ -60,9 +80,7 @@ const planetIcons = [
 
 const levels = [
 
-    // -------------------------------
     // SHIRA - LEVEL 1
-    // -------------------------------
 
     {
         instruction:
@@ -79,9 +97,7 @@ const levels = [
     },
 
 
-    // -------------------------------
     // SHIRA - LEVEL 2
-    // -------------------------------
 
     {
         instruction:
@@ -98,9 +114,7 @@ const levels = [
     },
 
 
-    // -------------------------------
     // SHIRA - LEVEL 3
-    // -------------------------------
 
     {
         instruction:
@@ -121,7 +135,6 @@ const levels = [
     // PARTNER SECTION
     // LEVELS 4-6
     // ===================================
-
 
     {
         instruction:
@@ -176,6 +189,10 @@ const levels = [
 
 let currentLevel = 0;
 
+let attempts = 0;
+
+let answerWasCorrect = false;
+
 
 // -----------------------------------
 // CREATE PLANETS
@@ -194,7 +211,8 @@ function createPlanets(itemCount) {
         const planet =
             document.createElement("div");
 
-        planet.className = "planet";
+        planet.className =
+            "planet";
 
         planet.textContent =
             planetIcons[
@@ -202,7 +220,9 @@ function createPlanets(itemCount) {
                 planetIcons.length
             ];
 
-        gameBoard.appendChild(planet);
+        gameBoard.appendChild(
+            planet
+        );
     }
 }
 
@@ -228,6 +248,94 @@ function updateBoard() {
 
 
 // -----------------------------------
+// ATTEMPT COUNTER
+// -----------------------------------
+
+function updateAttempts() {
+
+    attemptCounter.textContent =
+        `Attempts: ${attempts}`;
+}
+
+
+// -----------------------------------
+// SHOW MODAL
+// -----------------------------------
+
+function showModal(
+    type,
+    title,
+    text,
+    buttonText
+) {
+
+    modalContent.classList.remove(
+        "success-modal",
+        "error-modal"
+    );
+
+
+    if (type === "success") {
+
+        modalContent.classList.add(
+            "success-modal"
+        );
+
+        modalIcon.textContent =
+            "🚀";
+
+    }
+
+    else {
+
+        modalContent.classList.add(
+            "error-modal"
+        );
+
+        modalIcon.textContent =
+            "🛸";
+
+    }
+
+
+    modalTitle.textContent =
+        title;
+
+    modalMessage.textContent =
+        text;
+
+    modalButton.textContent =
+        buttonText;
+
+    resultModal.classList.add(
+        "show"
+    );
+
+    resultModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+}
+
+
+// -----------------------------------
+// CLOSE MODAL
+// -----------------------------------
+
+function closeModal() {
+
+    resultModal.classList.remove(
+        "show"
+    );
+
+    resultModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+}
+
+
+// -----------------------------------
 // RESET LEVEL
 // -----------------------------------
 
@@ -245,16 +353,15 @@ function resetLevel() {
     flexWrapSelect.value =
         "nowrap";
 
-    message.textContent = "";
+    attempts = 0;
 
-    message.className =
-        "message";
+    answerWasCorrect = false;
 
-    nextButton.disabled =
-        true;
+    updateAttempts();
 
     gameBoard.classList.remove(
-        "completed"
+        "completed",
+        "wrong-answer"
     );
 
     updateBoard();
@@ -290,8 +397,13 @@ function loadLevel() {
 
 function checkAnswer() {
 
+    attempts++;
+
+    updateAttempts();
+
     const solution =
         levels[currentLevel].solution;
+
 
     const isCorrect =
         flexDirectionSelect.value
@@ -307,46 +419,67 @@ function checkAnswer() {
             === solution.flexWrap;
 
 
+    gameBoard.classList.remove(
+        "completed",
+        "wrong-answer"
+    );
+
+
     if (isCorrect) {
 
-        message.textContent =
-            "✅ Correct! Mission accomplished.";
-
-        message.className =
-            "message success";
-
-        nextButton.disabled =
-            false;
+        answerWasCorrect = true;
 
         gameBoard.classList.add(
             "completed"
+        );
+
+
+        showModal(
+            "success",
+            "Mission Accomplished! 🎉",
+            `Correct! You solved this level in ${attempts} attempt${attempts === 1 ? "" : "s"}.`,
+            currentLevel === levels.length - 1
+                ? "Finish Mission"
+                : "Next Level"
         );
 
     }
 
     else {
 
-        message.textContent =
-            "❌ Not quite. Adjust the Flexbox properties and try again.";
+        answerWasCorrect = false;
 
-        message.className =
-            "message error";
+        void gameBoard.offsetWidth;
 
-        nextButton.disabled =
-            true;
+        gameBoard.classList.add(
+            "wrong-answer"
+        );
 
-        gameBoard.classList.remove(
-            "completed"
+
+        showModal(
+            "error",
+            "Not Quite Yet",
+            "Adjust the Flexbox properties and try again.",
+            "Try Again"
         );
     }
 }
 
 
 // -----------------------------------
-// NEXT LEVEL
+// MODAL BUTTON
 // -----------------------------------
 
-function nextLevel() {
+function handleModalButton() {
+
+    closeModal();
+
+
+    if (!answerWasCorrect) {
+
+        return;
+    }
+
 
     if (
         currentLevel <
@@ -364,17 +497,11 @@ function nextLevel() {
         levelCounter.textContent =
             "Mission Complete";
 
+        attemptCounter.textContent =
+            "All levels completed";
+
         instruction.textContent =
             "You completed all Flexbox missions! 🎉";
-
-        message.textContent =
-            "🚀 Excellent work! You mastered the Space Flex Mission.";
-
-        message.className =
-            "message success";
-
-        nextButton.disabled =
-            true;
 
         checkButton.disabled =
             true;
@@ -413,6 +540,7 @@ flexWrapSelect.addEventListener(
     updateBoard
 );
 
+
 checkButton.addEventListener(
     "click",
     checkAnswer
@@ -423,9 +551,9 @@ resetButton.addEventListener(
     resetLevel
 );
 
-nextButton.addEventListener(
+modalButton.addEventListener(
     "click",
-    nextLevel
+    handleModalButton
 );
 
 
