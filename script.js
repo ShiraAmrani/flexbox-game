@@ -41,19 +41,29 @@ const resultModal =
     document.getElementById("result-modal");
 
 const modalContent =
-    resultModal.querySelector(".modal-content");
+    resultModal.querySelector(
+        ".modal-content"
+    );
 
 const modalIcon =
-    document.getElementById("modal-icon");
+    document.getElementById(
+        "modal-icon"
+    );
 
 const modalTitle =
-    document.getElementById("modal-title");
+    document.getElementById(
+        "modal-title"
+    );
 
 const modalMessage =
-    document.getElementById("modal-message");
+    document.getElementById(
+        "modal-message"
+    );
 
 const modalButton =
-    document.getElementById("modal-button");
+    document.getElementById(
+        "modal-button"
+    );
 
 
 // -----------------------------------
@@ -80,7 +90,9 @@ const planetIcons = [
 
 const levels = [
 
-    // SHIRA - LEVEL 1
+    // -------------------------------
+    // LEVEL 1
+    // -------------------------------
 
     {
         instruction:
@@ -89,15 +101,25 @@ const levels = [
         itemCount: 3,
 
         solution: {
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "stretch",
-            flexWrap: "nowrap"
+
+            flexDirection:
+                "row",
+
+            justifyContent:
+                "center",
+
+            alignItems:
+                "stretch",
+
+            flexWrap:
+                "nowrap"
         }
     },
 
 
-    // SHIRA - LEVEL 2
+    // -------------------------------
+    // LEVEL 2
+    // -------------------------------
 
     {
         instruction:
@@ -106,15 +128,25 @@ const levels = [
         itemCount: 3,
 
         solution: {
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "stretch",
-            flexWrap: "nowrap"
+
+            flexDirection:
+                "column",
+
+            justifyContent:
+                "flex-start",
+
+            alignItems:
+                "stretch",
+
+            flexWrap:
+                "nowrap"
         }
     },
 
 
-    // SHIRA - LEVEL 3
+    // -------------------------------
+    // LEVEL 3
+    // -------------------------------
 
     {
         instruction:
@@ -123,60 +155,105 @@ const levels = [
         itemCount: 4,
 
         solution: {
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignItems: "flex-end",
-            flexWrap: "nowrap"
+
+            flexDirection:
+                "row",
+
+            justifyContent:
+                "flex-start",
+
+            alignItems:
+                "flex-end",
+
+            flexWrap:
+                "nowrap"
         }
     },
 
 
     // ===================================
-    // PARTNER SECTION
-    // LEVELS 4-6
+    // LEVELS 4 - 6
+    // SECOND PART OF THE GAME
     // ===================================
+
+
+    // -------------------------------
+    // LEVEL 4
+    // -------------------------------
 
     {
         instruction:
-            "Place the planets in a row with equal space between them and center them vertically.",
+            "Spread five planets across the row with equal space between them and center them vertically.",
+
+        itemCount: 5,
+
+        solution: {
+
+            flexDirection:
+                "row",
+
+            justifyContent:
+                "space-between",
+
+            alignItems:
+                "center",
+
+            flexWrap:
+                "nowrap"
+        }
+    },
+
+
+    // -------------------------------
+    // LEVEL 5
+    // -------------------------------
+
+    {
+        instruction:
+            "Create a vertical space route. Center the planets from top to bottom and move the route to the right side.",
 
         itemCount: 4,
 
         solution: {
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "nowrap"
+
+            flexDirection:
+                "column",
+
+            justifyContent:
+                "center",
+
+            alignItems:
+                "flex-end",
+
+            flexWrap:
+                "nowrap"
         }
     },
 
 
-    {
-        instruction:
-            "Arrange the planets vertically, center them from top to bottom and move them to the right side.",
-
-        itemCount: 3,
-
-        solution: {
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "flex-end",
-            flexWrap: "nowrap"
-        }
-    },
-
+    // -------------------------------
+    // LEVEL 6
+    // -------------------------------
 
     {
         instruction:
-            "Wrap the planets onto multiple rows and center them horizontally.",
+            "Wrap the planets onto multiple rows and distribute them evenly across the available space.",
 
         itemCount: 10,
 
         solution: {
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "flex-start",
-            flexWrap: "wrap"
+
+            flexDirection:
+                "row",
+
+            justifyContent:
+                "space-evenly",
+
+            alignItems:
+                "flex-start",
+
+            flexWrap:
+                "wrap"
         }
     }
 
@@ -198,9 +275,12 @@ let answerWasCorrect = false;
 // CREATE PLANETS
 // -----------------------------------
 
-function createPlanets(itemCount) {
+function createPlanets(
+    itemCount
+) {
 
-    gameBoard.innerHTML = "";
+    gameBoard.innerHTML =
+        "";
 
     for (
         let index = 0;
@@ -209,7 +289,9 @@ function createPlanets(itemCount) {
     ) {
 
         const planet =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         planet.className =
             "planet";
@@ -275,7 +357,9 @@ function showModal(
     );
 
 
-    if (type === "success") {
+    if (
+        type === "success"
+    ) {
 
         modalContent.classList.add(
             "success-modal"
@@ -355,7 +439,8 @@ function resetLevel() {
 
     attempts = 0;
 
-    answerWasCorrect = false;
+    answerWasCorrect =
+        false;
 
     updateAttempts();
 
@@ -401,22 +486,36 @@ function checkAnswer() {
 
     updateAttempts();
 
+
     const solution =
-        levels[currentLevel].solution;
+        levels[
+            currentLevel
+        ].solution;
 
 
     const isCorrect =
+
         flexDirectionSelect.value
-            === solution.flexDirection
+            ===
+            solution.flexDirection
+
         &&
+
         justifyContentSelect.value
-            === solution.justifyContent
+            ===
+            solution.justifyContent
+
         &&
+
         alignItemsSelect.value
-            === solution.alignItems
+            ===
+            solution.alignItems
+
         &&
+
         flexWrapSelect.value
-            === solution.flexWrap;
+            ===
+            solution.flexWrap;
 
 
     gameBoard.classList.remove(
@@ -425,9 +524,12 @@ function checkAnswer() {
     );
 
 
-    if (isCorrect) {
+    if (
+        isCorrect
+    ) {
 
-        answerWasCorrect = true;
+        answerWasCorrect =
+            true;
 
         gameBoard.classList.add(
             "completed"
@@ -435,11 +537,19 @@ function checkAnswer() {
 
 
         showModal(
+
             "success",
+
             "Mission Accomplished! 🎉",
+
             `Correct! You solved this level in ${attempts} attempt${attempts === 1 ? "" : "s"}.`,
-            currentLevel === levels.length - 1
+
+            currentLevel
+                ===
+                levels.length - 1
+
                 ? "Finish Mission"
+
                 : "Next Level"
         );
 
@@ -447,9 +557,11 @@ function checkAnswer() {
 
     else {
 
-        answerWasCorrect = false;
+        answerWasCorrect =
+            false;
 
-        void gameBoard.offsetWidth;
+        void
+            gameBoard.offsetWidth;
 
         gameBoard.classList.add(
             "wrong-answer"
@@ -457,9 +569,13 @@ function checkAnswer() {
 
 
         showModal(
+
             "error",
+
             "Not Quite Yet",
+
             "Adjust the Flexbox properties and try again.",
+
             "Try Again"
         );
     }
@@ -475,14 +591,17 @@ function handleModalButton() {
     closeModal();
 
 
-    if (!answerWasCorrect) {
+    if (
+        !answerWasCorrect
+    ) {
 
         return;
     }
 
 
     if (
-        currentLevel <
+        currentLevel
+        <
         levels.length - 1
     ) {
 
