@@ -8,9 +8,21 @@
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(180deg, #020617, #0f172a);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #020617,
+            #0f172a
+        );
+
     color: white;
+
     min-height: 100vh;
 }
 
@@ -21,17 +33,27 @@ body {
 
 .main-header {
     text-align: center;
-    padding: 35px 20px 20px;
+
+    padding:
+        35px
+        20px
+        20px;
 }
 
 .main-header h1 {
-    margin: 0 0 10px;
+    margin:
+        0
+        0
+        10px;
+
     font-size: 38px;
 }
 
 .main-header p {
     margin: 0;
+
     color: #cbd5e1;
+
     font-size: 17px;
 }
 
@@ -42,7 +64,9 @@ body {
 
 .game {
     max-width: 900px;
+
     margin: auto;
+
     padding: 20px;
 }
 
@@ -53,37 +77,53 @@ body {
 
 .game-info {
     text-align: center;
+
     margin-bottom: 25px;
 }
 
 .status-row {
     display: flex;
+
     justify-content: center;
+
     flex-wrap: wrap;
+
     gap: 12px;
 }
 
 #level-counter,
 #attempt-counter {
     display: inline-block;
-    margin: 0 0 8px;
-    padding: 7px 14px;
+
+    margin:
+        0
+        0
+        8px;
+
+    padding:
+        7px
+        14px;
+
     border-radius: 999px;
+
     font-weight: bold;
 }
 
 #level-counter {
     background-color: #1e3a8a;
+
     color: #bfdbfe;
 }
 
 #attempt-counter {
     background-color: #334155;
+
     color: #e2e8f0;
 }
 
 #instruction {
     margin-top: 8px;
+
     line-height: 1.4;
 }
 
@@ -94,8 +134,14 @@ body {
 
 .game-board {
     width: 700px;
+
     height: 350px;
-    margin: 0 auto 30px;
+
+    margin:
+        0
+        auto
+        30px;
+
     padding: 20px;
 
     background:
@@ -105,20 +151,29 @@ body {
             #0f172a
         );
 
-    border: 3px solid #475569;
+    border:
+        3px
+        solid
+        #475569;
+
     border-radius: 18px;
 
     display: flex;
 
     flex-direction: row;
+
     justify-content: flex-start;
+
     align-items: stretch;
+
     flex-wrap: nowrap;
 
     overflow: hidden;
 
     box-shadow:
-        0 15px 40px
+        0
+        15px
+        40px
         rgba(0, 0, 0, 0.35);
 
     transition:
@@ -133,12 +188,15 @@ body {
 
 .planet {
     width: 75px;
+
     height: 75px;
 
     flex-shrink: 0;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     margin: 5px;
@@ -146,11 +204,22 @@ body {
     font-size: 45px;
 
     background-color:
-        rgba(51, 65, 85, 0.75);
+        rgba(
+            51,
+            65,
+            85,
+            0.75
+        );
 
     border:
-        1px solid
-        rgba(255, 255, 255, 0.08);
+        1px
+        solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
 
     border-radius: 50%;
 
@@ -161,6 +230,7 @@ body {
 
 .planet:hover {
     transform: scale(1.08);
+
     background-color: #475569;
 }
 
@@ -171,9 +241,13 @@ body {
 
 .controls {
     display: flex;
+
     flex-wrap: wrap;
+
     justify-content: center;
+
     gap: 18px;
+
     margin-bottom: 25px;
 }
 
@@ -181,6 +255,7 @@ body {
     min-width: 170px;
 
     display: flex;
+
     flex-direction: column;
 
     gap: 7px;
@@ -188,19 +263,25 @@ body {
 
 .control-group label {
     font-weight: bold;
+
     color: #e2e8f0;
 }
 
 .control-group select {
-    padding: 11px 12px;
+    padding:
+        11px
+        12px;
 
     border: none;
+
     border-radius: 8px;
 
     background-color: white;
+
     color: #0f172a;
 
     font-size: 15px;
+
     cursor: pointer;
 }
 
@@ -211,20 +292,27 @@ body {
 
 .buttons {
     display: flex;
+
     justify-content: center;
+
     flex-wrap: wrap;
+
     gap: 12px;
 }
 
 button {
-    padding: 12px 20px;
+    padding:
+        12px
+        20px;
 
     border: none;
+
     border-radius: 10px;
 
     cursor: pointer;
 
     font-size: 15px;
+
     font-weight: bold;
 
     transition:
@@ -232,18 +320,27 @@ button {
         opacity 0.2s;
 }
 
-button:hover {
-    transform: translateY(-2px);
+button:hover:not(:disabled) {
+    transform:
+        translateY(-2px);
 }
 
 #check-button {
     background-color: #22c55e;
+
     color: #052e16;
 }
 
 #reset-button {
     background-color: #f59e0b;
+
     color: #451a03;
+}
+
+button:disabled {
+    opacity: 0.4;
+
+    cursor: not-allowed;
 }
 
 
@@ -255,16 +352,30 @@ button:hover {
     border-color: #22c55e;
 
     box-shadow:
-        0 0 30px
-        rgba(34, 197, 94, 0.5);
+        0
+        0
+        30px
+        rgba(
+            34,
+            197,
+            94,
+            0.5
+        );
 }
 
 .game-board.wrong-answer {
     border-color: #ef4444;
 
     box-shadow:
-        0 0 25px
-        rgba(239, 68, 68, 0.45);
+        0
+        0
+        25px
+        rgba(
+            239,
+            68,
+            68,
+            0.45
+        );
 
     animation:
         shake
@@ -275,23 +386,28 @@ button:hover {
 @keyframes shake {
 
     0% {
-        transform: translateX(0);
+        transform:
+            translateX(0);
     }
 
     25% {
-        transform: translateX(-8px);
+        transform:
+            translateX(-8px);
     }
 
     50% {
-        transform: translateX(8px);
+        transform:
+            translateX(8px);
     }
 
     75% {
-        transform: translateX(-5px);
+        transform:
+            translateX(-5px);
     }
 
     100% {
-        transform: translateX(0);
+        transform:
+            translateX(0);
     }
 
 }
@@ -305,20 +421,28 @@ button:hover {
     position: fixed;
 
     top: 0;
+
     left: 0;
 
     width: 100%;
+
     height: 100%;
 
     display: none;
 
     justify-content: center;
+
     align-items: center;
 
     padding: 20px;
 
     background-color:
-        rgba(2, 6, 23, 0.78);
+        rgba(
+            2,
+            6,
+            23,
+            0.78
+        );
 
     z-index: 1000;
 }
@@ -329,6 +453,7 @@ button:hover {
 
 .modal-content {
     width: 100%;
+
     max-width: 420px;
 
     padding: 32px;
@@ -337,12 +462,23 @@ button:hover {
 
     background-color: #1e293b;
 
-    border: 2px solid #475569;
+    border:
+        2px
+        solid
+        #475569;
+
     border-radius: 20px;
 
     box-shadow:
-        0 20px 60px
-        rgba(0, 0, 0, 0.55);
+        0
+        20px
+        60px
+        rgba(
+            0,
+            0,
+            0,
+            0.55
+        );
 
     animation:
         modalAppear
@@ -359,6 +495,7 @@ button:hover {
 
 .modal-icon {
     font-size: 58px;
+
     margin-bottom: 10px;
 }
 
@@ -388,6 +525,7 @@ button:hover {
     min-width: 150px;
 
     background-color: #3b82f6;
+
     color: white;
 }
 
@@ -396,12 +534,16 @@ button:hover {
 
     from {
         opacity: 0;
-        transform: scale(0.85);
+
+        transform:
+            scale(0.85);
     }
 
     to {
         opacity: 1;
-        transform: scale(1);
+
+        transform:
+            scale(1);
     }
 
 }
@@ -413,7 +555,9 @@ button:hover {
 
 footer {
     text-align: center;
+
     padding: 25px;
+
     color: #94a3b8;
 }
 
@@ -438,18 +582,30 @@ footer {
 
     .game {
         overflow: hidden;
-        padding: 15px 12px;
+
+        padding:
+            15px
+            12px;
     }
 
     .game-board {
-        transform: scale(0.48);
-        transform-origin: top left;
-        margin-bottom: -160px;
+        transform:
+            scale(0.48);
+
+        transform-origin:
+            top
+            left;
+
+        margin-bottom:
+            -160px;
     }
 
     .controls {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
     }
 
     .control-group {
@@ -457,7 +613,8 @@ footer {
     }
 
     .buttons {
-        flex-direction: column;
+        flex-direction:
+            column;
     }
 
     .buttons button {
